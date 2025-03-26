@@ -223,7 +223,7 @@
     </nav>
     
     <main>
-    
+    my contribution start from here
         <script>
             const staffModules = {
                 "Dr. Alice Johnson": ["Introduction to Programming", "Computer Networks"],
@@ -262,6 +262,7 @@
                                 document.write(`<div>${module}</div>`);
                             });
                             document.write(`</div>`);
+and end here 
                         }
                     </script>
                     <div class="container">
