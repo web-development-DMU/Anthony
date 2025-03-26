@@ -1,0 +1,100 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .module {
+            background: #e3e3e3;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .staff-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: #d9edf7;
+            border-radius: 5px;
+        }
+        .staff-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .staff-list li {
+            padding: 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #00509e;
+        }
+        .staff-list li:hover {
+            text-decoration: underline;
+        }
+        .module-list {
+            margin-top: 10px;
+            display: none;
+            padding-left: 20px;
+        }
+    </style>
+    <script>
+        const staffModules = {
+            "Dr. Alice Johnson": ["Introduction to Programming", "Computer Networks"],
+            "Dr. Brian Lee": ["Mathematics for Computer Science", "Software Testing & Quality Assurance"],
+            "Dr. Carol White": ["Computer Systems & Architecture", "Embedded Systems"],
+            "Dr. David Green": ["Databases", "Human-Computer Interaction"],
+            "Dr. Emma Scott": ["Software Engineering", "Blockchain Technologies"],
+            "Dr. Frank Moore": ["Algorithms & Data Structures", "Cloud Computing"],
+            "Dr. Grace Adams": ["Cyber Security Fundamentals", "Digital Forensics"],
+            "Dr. Henry Clark": ["Artificial Intelligence", "Final Year Project"],
+            "Dr. Irene Hall": ["Machine Learning", "Advanced Machine Learning"],
+            "Dr. James Wright": ["Ethical Hacking", "Cyber Threat Intelligence"],
+        };
+
+        function toggleModules(staffName) {
+            const moduleDiv = document.getElementById(staffName);
+            if (moduleDiv.style.display === "none") {
+                moduleDiv.style.display = "block";
+            } else {
+                moduleDiv.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Staff Dashboard</h1>
+        <h2>Staff Members</h2>
+        <div class="staff-list">
+            <ul>
+                <script>
+                    for (let staff in staffModules) {
+                        document.write(`<li onclick="toggleModules('${staff}')">${staff}</li>`);
+                        document.write(`<div id="${staff}" class="module-list" style="display:none;">`);
+                        staffModules[staff].forEach(module => {
+                            document.write(`<div class="module">${module}</div>`);
+                        });
+                        document.write(`</div>`);
+                    }
+                </script>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
