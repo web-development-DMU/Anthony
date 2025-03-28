@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            color: white;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        #search-bar {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        nav {
+            background-color: #00509e;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 10px 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            text-align: center;
+            padding: 40px;
+            flex: 1;
+        }
+        .home-button {
+            background-color: #00509e;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out, transform 0.2s;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            margin: 20px;
+        }
+        .home-button:hover {
+            background-color: #003366;
+            transform: scale(1.05);
+        }
+        .home-button:active {
+            background-color: #002244;
+            transform: scale(0.98);
+        }
+        .programme-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .programme {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 270px;
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .programme:hover {
+            transform: translateY(-10px);
+        }
+        .programme h3 {
+            color: #003366;
+        }
+        .modules {
+            display: none;
+        }
+        .register-btn {
+            background-color: #00509e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .register-btn:hover {
+            background-color: #003366;
+        }
+        .form-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: #00509e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        .marquee p {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            #search-bar {
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="logo.png" alt="University Logo" class="logo">
+            <h1>Student Course Hub</h1>
+        </div>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </header>
+
+    <nav>
+        <ul>
+            <button class="home-button" onclick="goHome()">Go to Home</button>
+            <li><a href="student interface.html">Student-facing Interface</a></li>
+            <li><a href="admin interface.html">Administration Interface</a></li>
+            <li><a href="security.html">Security & Data Protection</a></li>
+            <li><a href="user stories.html">Indicative User Stories</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Student Course Hub</h2>
+            <p>Explore a variety of undergraduate and postgraduate programmes. Find your ideal course and register your interest with ease.</p>
+
+            
+            <input type="text" id="search" placeholder="Search for a programme..." onkeyup="searchProgramme()">
+
+            
+            <h3>Select Your Study Level</h3>
+            <button onclick="showCourses('undergraduate')">Undergraduate</button>
+            <button onclick="showCourses('postgraduate')">Postgraduate</button>
+
+            <div id="course-container" class="programme-container" style="display:none;">
+               
+                <div id="undergraduate-courses" class="programme-container">
+                    <div class="programme" onclick="toggleModules('cs')">
+                        <h3>BSc Computer Science</h3>
+                        <div class="modules" id="cs">
+                            <ul>
+                                <li>Introduction to Programming</li>
+                                <li>Data Structures & Algorithms</li>
+                                <li>Artificial Intelligence</li>
+                                <li>Software Engineering</li>
+                            </ul>
+                            <button class="register-btn" onclick="openRegistrationForm('BSc Computer Science')">Register Interest</button>
+                        </div>
+                    </div>
+                    <div class="programme" onclick="toggleModules('it')">
+                        <h3>BSc Information Technology</h3>
+                        <div class="modules" id="it">
+                            <ul>
+                                <li>Computer Networks</li>
+                                <li>Cybersecurity</li>
+                                <li>Database Management</li>
+                                <li>Cloud Computing</li>
+                            </ul>
+                            <button class="register-btn" onclick="openRegistrationForm('BSc Information Technology')">Register Interest</button>
+                        </div>
+                    </div>
+                    <div class="programme" onclick="toggleModules('ba')">
+                        <h3>BSc Business Administration</h3>
+                        <div class="modules" id="ba">
+                            <ul>
+                                <li>Principles of Management</li>
+                                <li>Marketing Fundamentals</li>
+                                <li>Human Resource Management</li>
+                                <li>Financial Accounting</li>
+                            </ul>
+                            <button class="register-btn" onclick="openRegistrationForm('BSc Business Administration')">Register Interest</button>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="postgraduate-courses" class="programme-container">
+                    <div class="programme" onclick="toggleModules('ds')">
+                        <h3>MSc Data Science</h3>
+                        <div class="modules" id="ds">
+                            <ul>
+                                <li>Machine Learning</li>
+                                <li>Big Data Analytics</li>
+                                <li>Data Visualization</li>
+                                <li>Deep Learning</li>
+                            </ul>
+                            <button class="register-btn" onclick="openRegistrationForm('MSc Data Science')">Register Interest</button>
+                        </div>
+                    </div>
+                    <div class="programme" onclick="toggleModules('cs')">
+                        <h3>MSc Computer Science</h3>
+                        <div class="modules" id="cs">
+                            <ul>
+                                <li>Advanced Programming</li>
+                                <li>Cloud Computing</li>
+                                <li>Cybersecurity</li>
+                                <li>Blockchain Technology</li>
+                            </ul>
+                            <button class="register-btn" onclick="openRegistrationForm('MSc Computer Science')">Register Interest</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+        <div id="registration-form" class="form-container">
+            <h3>Register Your Interest</h3>
+            <form id="interest-form" action="register.php" method="POST" onsubmit="return submitForm(event)">
+                <input type="hidden" id="selected-course" name="course">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Student Course Hub</p>
+        <div class="marquee">
+            <p>Stay updated with the latest programme news and deadlines!</p>
+        </div>
+        <p>Contact us: info@university.ac.uk</p>
+    </footer>
+
+    <script>
+        
+        function showCourses(level) {
+            const undergradCourses = document.getElementById('undergraduate-courses');
+            const postgradCourses = document.getElementById('postgraduate-courses');
+            const courseContainer = document.getElementById('course-container');
+
+            if (level === 'undergraduate') {
+                undergradCourses.style.display = 'block';
+                postgradCourses.style.display = 'none';
+            } else if (level === 'postgraduate') {
+                postgradCourses.style.display = 'block';
+                undergradCourses.style.display = 'none';
+            }
+            courseContainer.style.display = 'flex';
+        }
+
+        function toggleModules(courseId) {
+            let modules = document.getElementById(courseId);
+            modules.style.display = modules.style.display === 'block' ? 'none' : 'block';
+        }
+
+        
+        function openRegistrationForm(courseName) {
+            document.getElementById('selected-course').value = courseName;
+            document.getElementById('registration-form').style.display = 'block';
+        }
+
+        
+        function submitForm(event) {
+            event.preventDefault();
+            const courseName = document.getElementById('selected-course').value;
+            document.getElementById('registration-form').style.display = 'none';
+            alert('You have been enrolled in the course: ' + courseName);
+            return false; 
+        }
+
+        function searchProgramme() {
+            let input = document.getElementById('search').value.toLowerCase();
+            let programmes = document.querySelectorAll('.programme');
+            
+            programmes.forEach(programme => {
+                let text = programme.innerText.toLowerCase();
+                programme.style.display = text.includes(input) ? 'block' : 'none';
+            });
+        }
+
+        
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

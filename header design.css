@@ -1,0 +1,228 @@
+header{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f8ff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #003366;
+    color: white;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+.logo-title {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    height: 50px;
+    margin-right: 15px;
+}
+#search-bar {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+nav {
+    background-color: #00509e;
+    padding: 10px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    margin: 10px 15px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+main {
+    text-align: center;
+    padding: 40px;
+    flex: 1;
+}
+.home-button {
+    background-color: #00509e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.home-button:hover {
+    background-color: #003366;
+}
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    width: 100%;
+}
+marquee {
+    color: yellow;
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    #search-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+.home-button {
+background-color: #00509e;
+color: white;
+padding: 12px 25px;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-size: 18px;
+font-weight: bold;
+transition: background 0.3s ease-in-out, transform 0.2s;
+box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+text-transform: uppercase;
+margin: 20px;
+}
+
+
+.home-button:hover {
+background-color: #003366;
+transform: scale(1.05);
+}
+
+
+.home-button:active {
+background-color: #002244;
+transform: scale(0.98);
+}
+
+
+   
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f8ff;
+        color: #333;
+    }
+
+   
+    #search {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px;
+        margin: 20px auto;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    
+    .programme-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .programme {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .modules {
+        display: none;
+    }
+
+    .register-btn {
+        background-color: #00509e;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .register-btn:hover {
+        background-color: #003366;
+    }
+
+  
+    .form-container {
+        display: none;
+        background: white;
+        padding: 20px;
+        width: 50%;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-container button {
+        background-color: #00509e;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+   
+    @media (max-width: 768px) {
+        .form-container {
+            width: 90%;
+        }
+    }

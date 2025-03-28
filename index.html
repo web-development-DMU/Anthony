@@ -1,12 +1,12 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-&lt;title&gt;Student Course Hub&lt;/title&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot;&gt;
-&lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;
-&lt;style&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Course Hub</title>
+<link rel="stylesheet"href="styles.css">
+<script src="script.js" defer></script>
+<style>
 * {
 margin: 0;
 padding: 0;
@@ -136,30 +136,33 @@ transform: scale(1.05);
 background-color: #002244;
 transform: scale(0.98);
 }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;header&gt;
-&lt;div class=&quot;logo-title&quot;&gt;
-&lt;img src=&quot;logo.png&quot; alt=&quot;University Logo&quot; class=&quot;logo&quot;&gt;
-&lt;h1&gt;Student Course Hub&lt;/h1&gt;
-&lt;/div&gt;
-&lt;input type=&quot;text&quot; id=&quot;search-bar&quot; placeholder=&quot;Search...&quot;&gt;
-&lt;/header&gt;
-&lt;nav&gt;
+</style>
+</head>
+<body>
+<header>
+<div class="logo-title">
+<img src="logo.png" alt="University Logo" class="logo">
+<h1>Student Course Hub</h1>
+</div>
+<input type="text" id="search-bar" placeholder="Search..." autocomplete="off">
+<div id="suggestions"></div>
+</header>
+<nav>
 
-&lt;ul&gt;
-&lt;button class=&quot;home-button&quot; onclick=&quot;goHome()&quot;&gt;Go to Home&lt;/button&gt;
-&lt;li&gt;&lt;a href=&quot;student interface.html&quot;&gt;Student-facing Interface&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;admin interface.html&quot;&gt;Administration Interface&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;security.html&quot;&gt;Security &amp; Data Protection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;user stories.html&quot;&gt;Indicative User Stories&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/nav&gt;
-&lt;main&gt;
-&lt;/main&gt;
-&lt;!-- CSS --&gt;
-&lt;style&gt;
+<ul>
+<button class="home-button" onclick="goHome()">Go to Home</button>
+<li><a href="student.html">Student-facing Interface</a></li>
+<li><a href="module interface.html"> Staff Member </a>;</li>
+<li><a href="staff interface1.html"> Administration Interface</a>;</li>
+
+</ul>
+</nav>
+<main>
+
+</main>
+
+<!-- CSS -->
+<style>
 /* General Styles */
 * {
 margin: 0;
@@ -246,60 +249,28 @@ cursor: pointer;
 width: 90%;
 }
 }
-&lt;/style&gt;
-&lt;!-- JavaScript --&gt;
-&lt;script&gt;
+</style>
+<!-- JavaScript -->
+<script>
 function showCourses(level) {
-document.getElementById(&#39;course-container&#39;).style.display = &#39;flex&#39;;
+document.getElementById('course-container').style.display = 'flex';
 }
 function toggleModules(courseId) {
 let modules = document.getElementById(courseId);
-modules.style.display = modules.style.display === &#39;block&#39; ? &#39;none&#39; : &#39;block&#39;;
+modules.style.display = modules.style.display === 'block'; ? 'none' : 'block';
 }
 function openRegistrationForm(courseName) {
-document.getElementById(&#39;selected-course&#39;).value = courseName;
-document.getElementById(&#39;registration-form&#39;).style.display = &#39;block&#39;;
+document.getElementById('selected-course').value = courseName;
+document.getElementById('registration-form').style.display = 'block';
 }
 function searchProgramme() {}
-let input = document.getElementById(&#39;search&#39;).value.toLowerCase();
-let programmes = document.querySelectorAll(&#39;.programme&#39;);
-programmes.forEach(programme =&gt; {
+let input = document.getElementById('search').value.toLowerCase();
+let programmes = document.querySelectorAll('programme');
+programmes.forEach(programme => {
 let text = programme.innerText.toLowerCase();
-programme.style.display = text.includes(input) ? &#39;block&#39; : &#39;none&#39;;
+programme.style.display = text.includes(input) ? 'block' : 'none';
 });
 function goHome() {
 window.location.href = &quot;index.html&quot;;
 }
-&lt;/script&gt;
-&lt;!-- PHP Backend (register.php) --&gt;
-&lt;?php
-if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {
-$name = htmlspecialchars($_POST[&quot;name&quot;]);
-$email = htmlspecialchars($_POST[&quot;email&quot;]);
-$phone = htmlspecialchars($_POST[&quot;phone&quot;]);
-$course = htmlspecialchars($_POST[&quot;course&quot;]);
-// Simulated database connection (Replace with actual database logic)
-$file = &#39;registrations.txt&#39;;
-$data = &quot;Name: $name, Email: $email, Phone: $phone, Course: $course\n&quot;;
-
-file_put_contents($file, $data, FILE_APPEND);
-echo &quot;Thank you, $name! Your interest in $course has been recorded.&quot;;
-}
-?&gt;
-&lt;/main&gt;
-&lt;footer&gt;
-&lt;p&gt;&amp;copy; 2025 Student Course Hub&lt;/p&gt;
-&lt;marquee&gt;Stay updated with the latest programme news and deadlines!&lt;/marquee&gt;
-&lt;p&gt;Contact us: info@university.ac.uk&lt;/p&gt;
-&lt;/footer&gt;
-&lt;script&gt;
-function showCourses(level) {
-document.getElementById(&#39;course-container&#39;).style.display = &#39;flex&#39;;
-}
-function toggleModules(courseId) {
-let modules = document.getElementById(courseId);
-modules.style.display = modules.style.display === &#39;block&#39; ? &#39;none&#39; : &#39;block&#39;;
-}
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+</script>

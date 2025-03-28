@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #003366;
+            color: white;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+        }
+        .logo-title {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        #search-bar {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        nav {
+            background-color: #00509e;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 10px 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            text-align: center;
+            padding: 40px;
+            flex: 1;
+        }
+        .home-button {
+            background-color: #00509e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .home-button:hover {
+            background-color: #003366;
+        }
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+        }
+        marquee {
+            color: yellow;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            #search-bar {
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 5px 0;
+            }
+        }
+        .home-button {
+        background-color: #00509e;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        margin: 20px;
+    }
+
+
+    .home-button:hover {
+        background-color: #003366;
+        transform: scale(1.05);
+    }
+
+
+    .home-button:active {
+        background-color: #002244;
+        transform: scale(0.98);
+    }
+    .admin-container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    h2, h3 {
+        text-align: center;
+        color: #003366;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    input, button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        background: #00509e;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    button:hover {
+        background: #003366;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    .publish-btn {
+        background: green;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .unpublish-btn {
+        background: red;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .delete-btn {
+        background: #cc0000;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-title">
+            <img src="logo.png" alt="University Logo" class="logo">
+            <h1>Student Course Hub</h1>
+        </div>
+        <input type="text" id="search-bar" placeholder="Search...">
+    </header>
+    
+    <nav>
+        <ul>
+            <button class="home-button" onclick="goHome()">Go to Home</button>
+            <li><a href="student.html">Student-facing Interface</a></li>
+            <li><a href="staff interface.html">Administration Interface</a></li>
+            <li><a href="login.html">Security & Data Protection</a></li>
+        
+        </ul>
+    </nav>
+    
+    <main>
+    
+        <script>
+            const staffModules = {
+                "Dr. Alice Johnson": ["Introduction to Programming", "Computer Networks"],
+                "Dr. Brian Lee": ["Mathematics for Computer Science", "Software Testing & Quality Assurance"],
+                "Dr. Carol White": ["Computer Systems & Architecture", "Embedded Systems"],
+                "Dr. David Green": ["Databases", "Human-Computer Interaction"],
+                "Dr. Emma Scott": ["Software Engineering", "Blockchain Technologies"],
+                "Dr. Frank Moore": ["Algorithms & Data Structures", "Cloud Computing"],
+                "Dr. Grace Adams": ["Cyber Security Fundamentals", "Digital Forensics"],
+                "Dr. Henry Clark": ["Artificial Intelligence", "Final Year Project"],
+                "Dr. Irene Hall": ["Machine Learning", "Advanced Machine Learning"],
+                "Dr. James Wright": ["Ethical Hacking", "Cyber Threat Intelligence"],
+            };
+    
+            function toggleModules(staffName) {
+                const moduleDiv = document.getElementById(staffName);
+                if (moduleDiv.style.display === "none") {
+                    moduleDiv.style.display = "block";
+                } else {
+                    moduleDiv.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Staff Dashboard</h1>
+            <h2>Staff Members</h2>
+            <div class="staff-list">
+                <ul>
+                    <script>
+                        for (let staff in staffModules) {
+                            document.write(`<button class="button" onclick="toggleModules('${staff}')">${staff}</button>`);
+                            document.write(`<div id="${staff}" class="module-list" style="display:none;">`);
+                            staffModules[staff].forEach(module => {
+                                document.write(`<div>${module}</div>`);
+                            });
+                            document.write(`</div>`);
+                        }
+                    </script>
+                    <div class="container">
+                        <h2>Admin Dashboard - Programme Management</h2>
+                        <p>Authorized administrators can manage programmes and modules from this interface.</p>
+                        <div class="admin-container">
+                            <h3>Add New Programme</h3>
+                            <form id="add-programme-form">
+                                <input type="text" id="programme-name" placeholder="Programme Name" required>
+                                <input type="text" id="programme-leader" placeholder="Programme Leader" required>
+                                <button type="submit">Add Programme</button>
+                            </form>
+                            <h3>Programmes List</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Programme</th>
+                                        <th>Leader</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="programme-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <script>
+                        document.getElementById('add-programme-form').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            const programmeName = document.getElementById('programme-name').value;
+                            const programmeLeader = document.getElementById('programme-leader').value;
+                            if (programmeName && programmeLeader) {
+                                const table = document.getElementById('programme-list');
+                                const row = table.insertRow();
+                                row.innerHTML = `
+                                    <td>${programmeName}</td>
+                                    <td>${programmeLeader}</td>
+                                    <td class="status">Unpublished</td>
+                                    <td>
+                                        <button class="publish-btn" onclick="togglePublish(this)">Publish</button>
+                                        <button class="delete-btn" onclick="deleteProgramme(this)">Delete</button>
+                                    </td>
+                                `;
+                                document.getElementById('programme-name').value = '';
+                                document.getElementById('programme-leader').value = '';
+                            }
+                        });
+                        function deleteProgramme(button) {
+                            const row = button.parentElement.parentElement;
+                            row.remove();
+                        }
+                        function togglePublish(button) {
+                            const row = button.parentElement.parentElement;
+                            const statusCell = row.querySelector('.status');
+                            if (statusCell.innerText === 'Unpublished') {
+                                statusCell.innerText = 'Published';
+                                button.innerText = 'Unpublish';
+                                button.classList.remove('publish-btn');
+                                button.classList.add('unpublish-btn');
+                            } else {
+                                statusCell.innerText = 'Unpublished';
+                                button.innerText = 'Publish';
+                                button.classList.remove('unpublish-btn');
+                                button.classList.add('publish-btn');
+                            }
+                        }
+                    </script>
+                </body>
+                </html> 
+                       
+
